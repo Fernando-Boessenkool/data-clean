@@ -70,8 +70,7 @@ print(".............................................. [Done!]");
 print("Calculating averages.......................... [mean{subject ~ activity}]");
 for (s in 1:nrow(subjects)) {
 	for (a in 1:nrow(activities)) {
-		sql <- sprintf("SELECT * FROM t0 WHERE subject=%s AND id_activity=%s", s, a);
-		t1 <- sqldf(sql);
+		t1 <- subset(t0, t0$id_activity==a & t0$subject==s);
 		t2 <- data.frame();
 		t2[1,1] <- activities[a,1];
 		t2[1,2] <- subjects[s,1];
